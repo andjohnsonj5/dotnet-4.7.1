@@ -12,14 +12,17 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
+
     - name: Restore NuGet packages
       run: nuget restore dotnet-4.7.1.sln
 
-    - name: Build WpfApp
-      run: msbuild WpfApp/WpfApp.csproj /p:Configuration=Release /m
+    - name: Build solution
+      run: msbuild dotnet-4.7.1.sln /p:Configuration=Release
 
     - name: Run headless WPF check
       run: |
         echo Running WpfApp.exe --ci
-        WpfApp\bin\Release\WpfApp.exe --ci
+        .\WpfApp\bin\Release\WpfApp.exe --ci
       shell: cmd
