@@ -1,0 +1,88 @@
+name: Build and Release .NET Framework 4.7.1
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: {}
+
+jobs:
+  build-and-release:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
+
+    - name: Build solution
+      run: msbuild dotnet-4.7.1.sln /p:Configuration=Release
+
+    - name: Run Console app (smoke)
+      run: .\ConsoleApp\bin\Release\ConsoleApp.exe
+
+    - name: Run WPF app (smoke)
+      run: .\WpfApp\bin\Release\WpfApp.exe || true
+
+    - name: Determine next version tag
+      id: version
+      run: |
+        set -euo pipefail
+        # try to get latest tag starting with v
+        latest=$(git describe --tags --match "v[0-9]*" --abbrev=0 2>/dev/null || true)
+        echo "latest tag: $latest"
+        if [ -z "$latest" ]; then
+          next="v0.1.0"
+        else
+          ver=${latest#v}
+          IFS='.' read -r major minor patch <<< "$ver"
+          patch=$((patch+1))
+          next="v${major}.${minor}.${patch}"
+        fi
+        echo "new_tag=$next" >> $GITHUB_OUTPUT
+        echo "new_tag=$next"
+
+    - name: Create and push tag
+      if: always()
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        set -euo pipefail
+        tag=${{ steps.version.outputs.new_tag }}
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git tag -a "$tag" -m "Release $tag"
+        # push tag using token
+        git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} "$tag"
+
+    - name: Create GitHub Release
+      id: create_release
+      uses: actions/create-release@v1
+      with:
+        tag_name: ${{ steps.version.outputs.new_tag }}
+        release_name: ${{ steps.version.outputs.new_tag }}
+        body: "Automated release from GitHub Actions"
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Upload Console artifact
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ConsoleApp\\bin\\Release\\ConsoleApp.exe
+        asset_name: ConsoleApp-${{ steps.version.outputs.new_tag }}.exe
+        asset_content_type: application/octet-stream
+
+    - name: Upload WPF artifact
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: WpfApp\\bin\\Release\\WpfApp.exe
+        asset_name: WpfApp-${{ steps.version.outputs.new_tag }}.exe
+        asset_content_type: application/octet-stream
