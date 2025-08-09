@@ -1,0 +1,22 @@
+name: Build .NET Framework 4.7.1
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
+
+    - name: Build solution
+      run: msbuild dotnet-4.7.1.sln /p:Configuration=Release
+
+    - name: Run Console app
+      run: .\ConsoleApp\bin\Release\ConsoleApp.exe
+
+    - name: Run WPF app
+      run: .\WpfApp\bin\Release\WpfApp.exe
