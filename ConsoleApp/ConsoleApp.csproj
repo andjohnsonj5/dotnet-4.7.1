@@ -9,6 +9,11 @@
     <AssemblyName>ConsoleApp</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
   </PropertyGroup>
+  <PropertyGroup>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Include="Program.cs" />
   </ItemGroup>
