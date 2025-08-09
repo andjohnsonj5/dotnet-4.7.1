@@ -18,5 +18,6 @@ jobs:
     - name: Run Console app
       run: .\ConsoleApp\bin\Release\ConsoleApp.exe
 
-    - name: Run WPF app
-      run: .\WpfApp\bin\Release\WpfApp.exe
+    - name: Run WPF app (smoke)
+      # Run in CI/headless mode so the runner doesn't hang showing UI.
+      run: .\WpfApp\bin\Release\WpfApp.exe --ci
