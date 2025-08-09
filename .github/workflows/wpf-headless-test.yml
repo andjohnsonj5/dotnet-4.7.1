@@ -1,0 +1,25 @@
+name: WPF headless check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  wpf-check:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Restore NuGet packages
+      run: nuget restore dotnet-4.7.1.sln
+
+    - name: Build WpfApp
+      run: msbuild WpfApp/WpfApp.csproj /p:Configuration=Release /m
+
+    - name: Run headless WPF check
+      run: |
+        echo Running WpfApp.exe --ci
+        WpfApp\bin\Release\WpfApp.exe --ci
+      shell: cmd
