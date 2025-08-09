@@ -30,6 +30,7 @@ jobs:
 
     - name: Determine next version tag
       id: version
+      shell: bash
       run: |
         set -euo pipefail
         # try to get latest tag starting with v
@@ -48,6 +49,7 @@ jobs:
 
     - name: Create and push tag
       if: always()
+      shell: bash
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
