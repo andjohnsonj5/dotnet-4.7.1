@@ -19,6 +19,12 @@
     <Compile Include="MainWindow.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="System.Xaml" />
+  </ItemGroup>
+  <ItemGroup>
     <Page Include="App.xaml" />
     <Page Include="MainWindow.xaml" />
   </ItemGroup>
