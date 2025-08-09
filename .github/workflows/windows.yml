@@ -43,4 +43,6 @@ jobs:
 
     - name: Run headless WPF check
       # Run in CI/headless mode so the runner doesn't hang showing UI.
-      run: .\wpf\WpfApp\bin\Release\WpfApp.exe --ci
+      # The uploaded artifact contains the files from `WpfApp/bin/Release` at the
+      # artifact root, so the executable will be at `wpf\\WpfApp.exe` after download.
+      run: .\wpf\WpfApp.exe --ci
