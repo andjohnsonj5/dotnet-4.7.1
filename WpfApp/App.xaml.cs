@@ -15,6 +15,21 @@ namespace WpfApp {
             var isCi = Array.Exists(argsList, a => string.Equals(a, "--ci", StringComparison.OrdinalIgnoreCase));
             var isGui = Array.Exists(argsList, a => string.Equals(a, "--gui", StringComparison.OrdinalIgnoreCase));
 
+            // Also detect common CI environment variables so that the app won't
+            // accidentally show UI on CI runners if callers forget to pass --ci.
+            // GitHub Actions sets GITHUB_ACTIONS=true; many CI systems set CI=true.
+            try {
+                var gh = Environment.GetEnvironmentVariable("GITHUB_ACTIONS");
+                var ciEnv = Environment.GetEnvironmentVariable("CI");
+                if (!isCi && (string.Equals(gh, "true", StringComparison.OrdinalIgnoreCase)
+                              || string.Equals(ciEnv, "true", StringComparison.OrdinalIgnoreCase))) {
+                    isCi = true;
+                    Console.WriteLine("Detected CI environment via environment variables; enabling headless --ci mode.");
+                }
+            } catch (Exception) {
+                // Ignore environment access errors and proceed with explicit args.
+            }
+
             if (isCi && isGui) {
                 Console.WriteLine("Both --ci and --gui specified; --ci takes precedence.");
             }
