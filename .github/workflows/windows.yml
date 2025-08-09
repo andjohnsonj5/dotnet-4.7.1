@@ -4,8 +4,9 @@ on: [push, pull_request]
 
 jobs:
   build:
+    name: Build and Package
     runs-on: windows-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -13,12 +14,33 @@ jobs:
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1
 
+    - name: Restore NuGet packages
+      run: nuget restore dotnet-4.7.1.sln
+
     - name: Build solution
       run: msbuild dotnet-4.7.1.sln /p:Configuration=Release
 
-    - name: Run Console app
+    - name: Run Console app (smoke)
       run: .\ConsoleApp\bin\Release\ConsoleApp.exe
 
-    - name: Run WPF app (smoke)
+    - name: Upload WPF release artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: wpf-release
+        path: WpfApp/bin/Release
+
+  wpf-check:
+    name: WPF Headless Check
+    needs: build
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+    - name: Download WPF artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: wpf-release
+        path: wpf
+
+    - name: Run headless WPF check
       # Run in CI/headless mode so the runner doesn't hang showing UI.
-      run: .\WpfApp\bin\Release\WpfApp.exe --ci
+      run: .\wpf\WpfApp\bin\Release\WpfApp.exe --ci
