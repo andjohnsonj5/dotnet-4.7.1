@@ -1,0 +1,185 @@
+Deep Security Scan Report
+Repository: https://github.com/andjohnsonj5/dotnet-4.7.1.git
+Date: 2025-08-09 10:12:02+00:00
+
+Scanning working tree files (git grep)...
+\nPATTERN: ghp_[A-Za-z0-9_]+
+\nPATTERN: x-access-token
+\nPATTERN: Authorization:
+\nPATTERN: -----BEGIN PRIVATE KEY
+\nPATTERN: -----BEGIN RSA PRIVATE KEY
+\nPATTERN: AKIA[0-9A-Z]{16}
+\nPATTERN: ssh-rsa
+\nPATTERN: ghs_[A-Za-z0-9]+
+\nPATTERN: GITHUB_TOKEN
+\nPATTERN: personal[-_ ]?access[-_ ]?token
+\nPATTERN: [A-Za-z0-9+/]{40,}
+\nPATTERN: [a-f0-9]{40,}
+\nScanning commit history (git log -G)...
+\nPATTERN(history): ghp_[A-Za-z0-9_]+
+\nPATTERN(history): x-access-token
+\nPATTERN(history): Authorization:
+\nPATTERN(history): -----BEGIN PRIVATE KEY
+\nPATTERN(history): -----BEGIN RSA PRIVATE KEY
+\nPATTERN(history): AKIA[0-9A-Z]{16}
+\nPATTERN(history): ssh-rsa
+\nPATTERN(history): ghs_[A-Za-z0-9]+
+\nPATTERN(history): GITHUB_TOKEN
+\nPATTERN(history): personal[-_ ]?access[-_ ]?token
+\nPATTERN(history): [A-Za-z0-9+/]{40,}
+\nPATTERN(history): [a-f0-9]{40,}
+\nSearching blobs for long base64/hex strings...
+commit 839dbb30a8df45956da28e9229866ca9986d50b1 Sat Aug 9 09:34:54 2025 +0000 CI Bot
+diff --git a/run_16847958006.log b/run_16847958006.log
+new file mode 100644
+index 0000000..d55ed92
+--- /dev/null
++++ b/run_16847958006.log
+@@ -0,0 +1,145 @@
++build	Set up job	﻿2025-08-09T09:32:55.9604048Z Current runner version: '2.327.1'
++build	Set up job	2025-08-09T09:32:55.9647080Z ##[group]Runner Image Provisioner
++build	Set up job	2025-08-09T09:32:55.9647761Z Hosted Compute Agent
++build	Set up job	2025-08-09T09:32:55.9648277Z Version: 20250711.363
++build	Set up job	2025-08-09T09:32:55.9648838Z Commit: 6785254374ce925a23743850c1cb91912ce5c14c
++build	Set up job	2025-08-09T09:32:55.9649396Z Build Date: 2025-07-11T20:04:25Z
++build	Set up job	2025-08-09T09:32:55.9649924Z ##[endgroup]
++build	Set up job	2025-08-09T09:32:55.9650348Z ##[group]Operating System
++build	Set up job	2025-08-09T09:32:55.9650845Z Microsoft Windows Server 2022
++build	Set up job	2025-08-09T09:32:55.9651343Z 10.0.20348
++build	Set up job	2025-08-09T09:32:55.9651758Z Datacenter
++build	Set up job	2025-08-09T09:32:55.9652127Z ##[endgroup]
++build	Set up job	2025-08-09T09:32:55.9652545Z ##[group]Runner Image
++build	Set up job	2025-08-09T09:32:55.9653017Z Image: windows-2022
++build	Set up job	2025-08-09T09:32:55.9653424Z Version: 20250803.1.0
++build	Set up job	2025-08-09T09:32:55.9654419Z Included Software: https://github.com/actions/runner-images/blob/win22/20250803.1/images/windows/Windows2022-Readme.md
++build	Set up job	2025-08-09T09:32:55.9655643Z Image Release: https://github.com/actions/runner-images/releases/tag/win22%2F20250803.1
++build	Set up job	2025-08-09T09:32:55.9656851Z ##[endgroup]
++build	Set up job	2025-08-09T09:32:55.9657843Z ##[group]GITHUB_TOKEN Permissions
++build	Set up job	2025-08-09T09:32:55.9659537Z Contents: read
++build	Set up job	2025-08-09T09:32:55.9660032Z Metadata: read
++build	Set up job	2025-08-09T09:32:55.9660448Z Packages: read
++build	Set up job	2025-08-09T09:32:55.9660888Z ##[endgroup]
++build	Set up job	2025-08-09T09:32:55.9662819Z Secret source: Actions
++build	Set up job	2025-08-09T09:32:55.9663416Z Prepare workflow directory
++build	Set up job	2025-08-09T09:32:56.0004857Z Prepare all required actions
++build	Set up job	2025-08-09T09:32:56.0042313Z Getting action download info
++build	Set up job	2025-08-09T09:32:56.1948058Z ##[group]Download immutable action package 'actions/checkout@v4'
++build	Set up job	2025-08-09T09:32:56.1949026Z Version: 4.2.2
++build	Set up job	2025-08-09T09:32:56.1949844Z Digest: sha256:ccb2698953eaebd21c7bf6268a94f9c26518a7e38e27e0b83c1fe1ad049819b1
++build	Set up job	2025-08-09T09:32:56.1950905Z Source commit SHA: 11bd71901bbe5b1630ceea73d27597364c9af683
++build	Set up job	2025-08-09T09:32:56.1951517Z ##[endgroup]
++build	Set up job	2025-08-09T09:32:56.3094461Z Download action repository 'microsoft/setup-msbuild@v1' (SHA:ede762b26a2de8d110bb5a3db4d7e0e080c0e917)
++build	Set up job	2025-08-09T09:32:56.7622877Z Complete job name: build
++build	Checkout	﻿2025-08-09T09:32:56.9225287Z ##[group]Run actions/checkout@v4
++build	Checkout	2025-08-09T09:32:56.9226232Z with:
++build	Checkout	2025-08-09T09:32:56.9226605Z   repository: andjohnsonj5/dotnet-4.7.1
++build	Checkout	2025-08-09T09:32:56.9227446Z   token: ***
++build	Checkout	2025-08-09T09:32:56.9227895Z   ssh-strict: true
++build	Checkout	2025-08-09T09:32:56.9228363Z   ssh-user: git
++build	Checkout	2025-08-09T09:32:56.9228833Z   persist-credentials: true
++build	Checkout	2025-08-09T09:32:56.9229369Z   clean: true
++build	Checkout	2025-08-09T09:32:56.9229847Z   sparse-checkout-cone-mode: true
++build	Checkout	2025-08-09T09:32:56.9230429Z   fetch-depth: 1
++build	Checkout	2025-08-09T09:32:56.9230883Z   fetch-tags: false
++build	Checkout	2025-08-09T09:32:56.9231382Z   show-progress: true
++build	Checkout	2025-08-09T09:32:56.9231856Z   lfs: false
++build	Checkout	2025-08-09T09:32:56.9232273Z   submodules: false
++build	Checkout	2025-08-09T09:32:56.9232750Z   set-safe-directory: true
++build	Checkout	2025-08-09T09:32:56.9233517Z ##[endgroup]
++build	Checkout	2025-08-09T09:32:57.0993387Z Syncing repository: andjohnsonj5/dotnet-4.7.1
++build	Checkout	2025-08-09T09:32:57.0996878Z ##[group]Getting Git version info
++build	Checkout	2025-08-09T09:32:57.0997958Z Working directory is 'D:\a\dotnet-4.7.1\dotnet-4.7.1'
++build	Checkout	2025-08-09T09:32:57.2139802Z [command]"C:\Program Files\Git\bin\git.exe" version
++build	Checkout	2025-08-09T09:32:57.5139674Z git version 2.50.1.windows.1
++build	Checkout	2025-08-09T09:32:57.5186823Z ##[endgroup]
++build	Checkout	2025-08-09T09:32:57.5206303Z Temporarily overriding HOME='D:\a\_temp\7f7137a6-974a-47f5-a99a-dc0d16c23717' before making global git config changes
++build	Checkout	2025-08-09T09:32:57.5208069Z Adding repository directory to the temporary git global config as a safe directory
++build	Checkout	2025-08-09T09:32:57.5218147Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\dotnet-4.7.1\dotnet-4.7.1
++build	Checkout	2025-08-09T09:32:57.5774171Z Deleting the contents of 'D:\a\dotnet-4.7.1\dotnet-4.7.1'
++build	Checkout	2025-08-09T09:32:57.5779970Z ##[group]Initializing the repository
++build	Checkout	2025-08-09T09:32:57.5789730Z [command]"C:\Program Files\Git\bin\git.exe" init D:\a\dotnet-4.7.1\dotnet-4.7.1
++build	Checkout	2025-08-09T09:32:57.6469158Z Initialized empty Git repository in D:/a/dotnet-4.7.1/dotnet-4.7.1/.git/
++build	Checkout	2025-08-09T09:32:57.6504474Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/andjohnsonj5/dotnet-4.7.1
++build	Checkout	2025-08-09T09:32:57.6884848Z ##[endgroup]
++build	Checkout	2025-08-09T09:32:57.6886128Z ##[group]Disabling automatic garbage collection
++build	Checkout	2025-08-09T09:32:57.6893758Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
++build	Checkout	2025-08-09T09:32:57.7116524Z ##[endgroup]
++build	Checkout	2025-08-09T09:32:57.7117701Z ##[group]Setting up auth
++build	Checkout	2025-08-09T09:32:57.7129471Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
++build	Checkout	2025-08-09T09:32:57.7357845Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
++build	Checkout	2025-08-09T09:32:58.9470850Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
++build	Checkout	2025-08-09T09:32:58.9720661Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
++build	Checkout	2025-08-09T09:32:59.3826538Z [command]"C:\Program Files\Git\bin\git.exe" config --local http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
++build	Checkout	2025-08-09T09:32:59.4065047Z ##[endgroup]
++build	Checkout	2025-08-09T09:32:59.4065893Z ##[group]Fetching the repository
++build	Checkout	2025-08-09T09:32:59.4084956Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +e99ed8025a71e928838a740213cda609915d193d:refs/remotes/origin/main
++build	Checkout	2025-08-09T09:33:00.1825968Z From https://github.com/andjohnsonj5/dotnet-4.7.1
++build	Checkout	2025-08-09T09:33:00.1827059Z  * [new ref]         e99ed8025a71e928838a740213cda609915d193d -> origin/main
++build	Checkout	2025-08-09T09:33:00.2106110Z ##[endgroup]
++build	Checkout	2025-08-09T09:33:00.2106769Z ##[group]Determining the checkout info
++build	Checkout	2025-08-09T09:33:00.2109115Z ##[endgroup]
++build	Checkout	2025-08-09T09:33:00.2119675Z [command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
++build	Checkout	2025-08-09T09:33:00.2517497Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
++build	Checkout	2025-08-09T09:33:00.2743569Z ##[group]Checking out the ref
++build	Checkout	2025-08-09T09:33:00.2757072Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force -B main refs/remotes/origin/main
++build	Checkout	2025-08-09T09:33:00.3228138Z branch 'main' set up to track 'origin/main'.
++build	Checkout	2025-08-09T09:33:00.3232886Z Switched to a new branch 'main'
++build	Checkout	2025-08-09T09:33:00.3264441Z ##[endgroup]
++build	Checkout	2025-08-09T09:33:00.3562071Z [command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
++build	Checkout	2025-08-09T09:33:00.3761598Z e99ed8025a71e928838a740213cda609915d193d
++build	Setup MSBuild	﻿2025-08-09T09:33:00.4093634Z ##[group]Run microsoft/setup-msbuild@v1
++build	Setup MSBuild	2025-08-09T09:33:00.4093992Z with:
++build	Setup MSBuild	2025-08-09T09:33:00.4094185Z   msbuild-architecture: x86
++build	Setup MSBuild	2025-08-09T09:33:00.4094410Z ##[endgroup]
++build	Setup MSBuild	2025-08-09T09:33:00.5460893Z [command]C:\ProgramData\Chocolatey\bin\vswhere.exe -products * -requires Microsoft.Component.MSBuild -property installationPath -latest
++build	Setup MSBuild	2025-08-09T09:33:00.9724068Z C:\Program Files\Microsoft Visual Studio\2022\Enterprise
++build	Build solution	﻿2025-08-09T09:33:01.0028380Z ##[group]Run msbuild dotnet-4.7.1.sln /p:Configuration=Release
++build	Build solution	2025-08-09T09:33:01.0028986Z [36;1mmsbuild dotnet-4.7.1.sln /p:Configuration=Release[0m
++build	Build solution	2025-08-09T09:33:01.0545831Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
++build	Build solution	2025-08-09T09:33:01.0546270Z ##[endgroup]
++build	Build solution	2025-08-09T09:33:09.0960718Z MSBuild version 17.14.18+a338add32 for .NET Framework
++build	Build solution	2025-08-09T09:33:10.2008098Z Build started 8/9/2025 9:33:10 AM.
++build	Build solution	2025-08-09T09:33:10.2142299Z 
++build	Build solution	2025-08-09T09:33:11.4504536Z Project "D:\a\dotnet-4.7.1\dotnet-4.7.1\dotnet-4.7.1.sln" on node 1 (default targets).
++build	Build solution	2025-08-09T09:33:11.4505290Z ValidateSolutionConfiguration:
++build	Build solution	2025-08-09T09:33:11.4505725Z   Building solution configuration "Release|Any CPU".
++build	Build solution	2025-08-09T09:33:13.7517519Z Project "D:\a\dotnet-4.7.1\dotnet-4.7.1\dotnet-4.7.1.sln" (1) is building "D:\a\dotnet-4.7.1\dotnet-4.7.1\ConsoleApp\ConsoleApp.csproj" (2) on node 1 (default targets).
++build	Build solution	2025-08-09T09:33:13.7781659Z C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(843,5): error : The BaseOutputPath/OutputPath property is not set for project 'ConsoleApp.csproj'.  Please check to make sure that you have specified a valid combination of Configuration and Platform for this project.  Configuration='Release'  Platform='AnyCPU'. You may be seeing this message because you are trying to build a project without a solution file, and have specified a non-default Configuration or Platform that doesn't exist for this project. [D:\a\dotnet-4.7.1\dotnet-4.7.1\ConsoleApp\ConsoleApp.csproj]
++build	Build solution	2025-08-09T09:33:13.8251830Z Done Building Project "D:\a\dotnet-4.7.1\dotnet-4.7.1\ConsoleApp\ConsoleApp.csproj" (default targets) -- FAILED.
++build	Build solution	2025-08-09T09:33:13.8459706Z Project "D:\a\dotnet-4.7.1\dotnet-4.7.1\dotnet-4.7.1.sln" (1) is building "D:\a\dotnet-4.7.1\dotnet-4.7.1\WpfApp\WpfApp.csproj" (3) on node 1 (default targets).
++build	Build solution	2025-08-09T09:33:13.8464480Z C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(843,5): error : The BaseOutputPath/OutputPath property is not set for project 'WpfApp.csproj'.  Please check to make sure that you have specified a valid combination of Configuration and Platform for this project.  Configuration='Release'  Platform='AnyCPU'. You may be seeing this message because you are trying to build a project without a solution file, and have specified a non-default Configuration or Platform that doesn't exist for this project. [D:\a\dotnet-4.7.1\dotnet-4.7.1\WpfApp\WpfApp.csproj]
++build	Build solution	2025-08-09T09:33:13.8467804Z Done Building Project "D:\a\dotnet-4.7.1\dotnet-4.7.1\WpfApp\WpfApp.csproj" (default targets) -- FAILED.
++build	Build solution	2025-08-09T09:33:13.8604033Z Done Building Project "D:\a\dotnet-4.7.1\dotnet-4.7.1\dotnet-4.7.1.sln" (default targets) -- FAILED.
++build	Build solution	2025-08-09T09:33:13.9037139Z 
++build	Build solution	2025-08-09T09:33:13.9037525Z Build FAILED.
++build	Build solution	2025-08-09T09:33:13.9041549Z 
++build	Build solution	2025-08-09T09:33:13.9042273Z "D:\a\dotnet-4.7.1\dotnet-4.7.1\dotnet-4.7.1.sln" (default target) (1) ->
++build	Build solution	2025-08-09T09:33:13.9044014Z "D:\a\dotnet-4.7.1\dotnet-4.7.1\ConsoleApp\ConsoleApp.csproj" (default target) (2) ->
++build	Build solution	2025-08-09T09:33:13.9044986Z (_CheckForInvalidConfigurationAndPlatform target) -> 
++build	Build solution	2025-08-09T09:33:13.9049942Z   C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(843,5): error : The BaseOutputPath/OutputPath property is not set for project 'ConsoleApp.csproj'.  Please check to make sure that you have specified a valid combination of Configuration and Platform for this project.  Configuration='Release'  Platform='AnyCPU'. You may be seeing this message because you are trying to build a project without a solution file, and have specified a non-default Configuration or Platform that doesn't exist for this project. [D:\a\dotnet-4.7.1\dotnet-4.7.1\ConsoleApp\ConsoleApp.csproj]
++build	Build solution	2025-08-09T09:33:13.9053392Z 
++build	Build solution	2025-08-09T09:33:13.9053414Z 
++build	Build solution	2025-08-09T09:33:13.9053604Z "D:\a\dotnet-4.7.1\dotnet-4.7.1\dotnet-4.7.1.sln" (default target) (1) ->
++build	Build solution	2025-08-09T09:33:13.9056203Z "D:\a\dotnet-4.7.1\dotnet-4.7.1\WpfApp\WpfApp.csproj" (default target) (3) ->
++build	Build solution	2025-08-09T09:33:13.9058253Z   C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(843,5): error : The BaseOutputPath/OutputPath property is not set for project 'WpfApp.csproj'.  Please check to make sure that you have specified a valid combination of Configuration and Platform for this project.  Configuration='Release'  Platform='AnyCPU'. You may be seeing this message because you are trying to build a project without a solution file, and have specified a non-default Configuration or Platform that doesn't exist for this project. [D:\a\dotnet-4.7.1\dotnet-4.7.1\WpfApp\WpfApp.csproj]
++build	Build solution	2025-08-09T09:33:13.9060264Z 
++build	Build solution	2025-08-09T09:33:13.9060323Z     0 Warning(s)
++build	Build solution	2025-08-09T09:33:13.9060477Z     2 Error(s)
++build	Build solution	2025-08-09T09:33:13.9121617Z 
++build	Build solution	2025-08-09T09:33:13.9121848Z Time Elapsed 00:00:03.74
++build	Build solution	2025-08-09T09:33:14.5677049Z ##[error]Process completed with exit code 1.
++build	Post Checkout	﻿2025-08-09T09:33:14.5867522Z Post job cleanup.
++build	Post Checkout	2025-08-09T09:33:14.8078058Z [command]"C:\Program Files\Git\bin\git.exe" version
++build	Post Checkout	2025-08-09T09:33:14.8351194Z git version 2.50.1.windows.1
++build	Post Checkout	2025-08-09T09:33:14.8438128Z Temporarily overriding HOME='D:\a\_temp\75b34030-16aa-4d3a-aca2-e05074e6da5c' before making global git config changes
++build	Post Checkout	2025-08-09T09:33:14.8439455Z Adding repository directory to the temporary git global config as a safe directory
++build	Post Checkout	2025-08-09T09:33:14.8450413Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\dotnet-4.7.1\dotnet-4.7.1
++build	Post Checkout	2025-08-09T09:33:14.8725418Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
++build	Post Checkout	2025-08-09T09:33:14.8990566Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
++build	Post Checkout	2025-08-09T09:33:15.3629281Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
++build	Post Checkout	2025-08-09T09:33:15.3830959Z http.https://github.com/.extraheader
++build	Post Checkout	2025-08-09T09:33:15.3869317Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all http.https://github.com/.extraheader
++build	Post Checkout	2025-08-09T09:33:15.4110537Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
++build	Complete job	﻿2025-08-09T09:33:15.8563563Z Cleaning up orphan processes
+\nFiles named like run_*.log in repository (tracked):
+\nTracked .log files:
