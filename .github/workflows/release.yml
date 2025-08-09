@@ -57,9 +57,14 @@ jobs:
         tag=${{ steps.version.outputs.new_tag }}
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
-        git tag -a "$tag" -m "Release $tag"
-        # push tag using token
-        git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} "$tag"
+        # if tag already exists on remote, skip creating/pushing
+        if git ls-remote --tags origin | grep -q "refs/tags/$tag$"; then
+          echo "Tag $tag already exists on remote; skipping tag creation."
+        else
+          git tag -a "$tag" -m "Release $tag"
+          # push tag using token
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} "$tag"
+        fi
 
     - name: Create GitHub Release
       id: create_release
